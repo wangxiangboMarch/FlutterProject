@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MyAppBar.dart';
+import '../MyNavigationBar/MyAppBar.dart';
 
 class MyScaffold extends StatelessWidget {
   @override

@@ -7,9 +7,9 @@ class MyButton extends StatelessWidget {
     // 该GestureDetector widget并不具有显示效果，而是检测由用户做出的手势
     //  当用户点击Container时， GestureDetector会调用它的onTap回调
     return new GestureDetector(
-      onTap: () {
-        print('MyButton was tapped!');
-      },
+        onTap: () {
+          print('MyButton was tapped!');
+        },
         child: new Container(
           height: 36.0,
           padding: const EdgeInsets.all(8.0),
@@ -23,7 +23,5 @@ class MyButton extends StatelessWidget {
           ),
         )
     );
-    // TODO: implement build
-    throw UnimplementedError();
   }
 }

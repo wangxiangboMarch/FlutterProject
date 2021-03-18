@@ -3,13 +3,10 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://mirrors.tuna.tsinghua.edu.cn/flutter/download.flutter.io"
-        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:6.8.3'
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -18,9 +15,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://mirrors.tuna.tsinghua.edu.cn/flutter/download.flutter.io"
-        }
     }
 }
 
