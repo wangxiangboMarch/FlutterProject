@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter_app/Model/like_num_model.dart';
+
+import 'package:flutter_app/syles/TextStyles.dart';
 
 /// 帖子文章的赞组件
 ///
@@ -20,32 +25,29 @@ class ArticleLikeBar extends StatefulWidget {
 /// 内部包括组件的点赞效果，点击后触发数字更新操作
 /// [likeNum] 为状态组件可变数据
 class ArticleLikeBarState extends State<ArticleLikeBar> {
-  /// 状态 state
-  int likeNum;
-
-  @override
-  void initState() {
-    super.initState();
-    likeNum ??= widget.likeNum;
-  }
-
-  /// 点赞动作效果，点击后[likeNum]加1
-  void like() {
-    setState(() {
-      likeNum = ++likeNum;
-    });
-  }
 
   /// 有状态类返回组件信息
   @override
   Widget build(BuildContext context) {
+    // 通过 context 获取 likeNumModel 句柄
+    final likeNumModel = Provider.of<LikeNumModel>(context);
     return Row(
-      children: <Widget>[
-        Icon(Icons.thumb_up, color: Colors.grey, size: 18),
-        Padding(padding: EdgeInsets.only(left: 10)),
-        TextButton(onPressed: () => like(), child: Text('$likeNum'))
-      ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FlatButton(
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.thumb_up, color: Colors.grey, size: 18),
+                Padding(padding: EdgeInsets.only(left: 10)),
+                Text(
+                  '${likeNumModel.value}',
+                  style: TextStyles.commonStyle(),
+                ),
+              ],
+            ),
+            onPressed: () => likeNumModel.like(),
+          ),
+        ],
     );
   }
-
 }

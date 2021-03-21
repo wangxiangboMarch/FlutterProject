@@ -7,8 +7,10 @@ import 'package:flutter_app/widgets/homepage/ArticleSummary.dart';
 import 'package:flutter_app/widgets/homepage/ArticleBottomBar.dart';
 import 'package:flutter_app/widgets/homepage/ArticleLikeBar.dart';
 
-class ArticleCard extends StatelessWidget {
+import 'package:flutter_app/pages/ArticleDetail.dart';
 
+/// 此为帖子描述类，包括了帖子UI中的所有元素
+class ArticleCard extends StatelessWidget {
   /// 传入的用户信息
   final UserInfoStruct userInfo;
 
@@ -19,23 +21,44 @@ class ArticleCard extends StatelessWidget {
   const ArticleCard({Key key, this.userInfo, this.articleInfo})
       : super(key: key);
 
+  /// 执行页面跳转到article_detail
+  void goToArticleDetailPage(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ArticleDetail();
+    }));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ArticleSummary(
-            title: articleInfo.title,
-            summary: articleInfo.summary,
-            articleImage: articleInfo.articleImage),
-        Row(
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.all(8),
+      child: FlatButton(
+        onPressed: () => goToArticleDetailPage(context),
+        child: Column(
           children: <Widget>[
-            ArticleBottomBar(
-                nickname: userInfo.nickname,
-                headerImage: userInfo.headerImage,
-                commentNum: articleInfo.commentNum),
-            ArticleLikeBar(likeNum: articleInfo.likeNum),
+            ArticleSummary(
+                title: articleInfo.title,
+                summary: articleInfo.summary,
+                articleImage: articleInfo.articleImage),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 9,
+                  child: ArticleBottomBar(
+                      nickname: userInfo.nickname,
+                      headerImage: userInfo.headerImage,
+                      commentNum: articleInfo.commentNum),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: ArticleLikeBar(),
+                ),
+              ],
+            ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
