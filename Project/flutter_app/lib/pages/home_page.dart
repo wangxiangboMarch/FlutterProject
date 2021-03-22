@@ -48,31 +48,32 @@ class HomePageState extends State<HomePage> {
   /// 有状态类返回组件信息
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(widget.prefix),
-        Text(this.currentTimeStr)
-      ],
-    );
-  }
-}
 
-/// MyApp 核心入口界面
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Two You',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+    return new Scaffold(
+      appBar: new AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.menu),
+          tooltip: 'Navigation menu',
+          onPressed: null,
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text('Two You'),
-            ),
-            body: Center(
-              child: HomePage(),
-            )));
+        title: new Text('Example title'),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
+      ),
+      //body占屏幕的大部分
+      body: new Center(
+        child: new Column(
+          children: <Widget>[
+            Text(widget.prefix),
+            Text(this.currentTimeStr)
+          ],
+        )
+      ),
+    );
   }
 }

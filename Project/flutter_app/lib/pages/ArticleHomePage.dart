@@ -28,16 +28,35 @@ class ArticleHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          BannerInfo(bannerImage: bannerImage),
-          ArticleCard(
-            userInfo: userInfo,
-            articleInfo: articleInfo,
+
+    return new Scaffold(
+      appBar: new AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.menu),
+          tooltip: 'Navigation menu',
+          onPressed: null,
+        ),
+        title: new Text('Example title'),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
           ),
         ],
       ),
+      //body占屏幕的大部分
+      body: new Container(
+        child: Column(
+          children: <Widget>[
+            BannerInfo(bannerImage: bannerImage),
+            ArticleCard(
+              userInfo: userInfo,
+              articleInfo: articleInfo,
+            ),
+          ],
+        ),
+      )
     );
   }
 }
