@@ -6,7 +6,9 @@ import 'package:flutter_app/pages/TutorialHome.dart';
 import 'package:flutter_app/pages/product/ShoppingList.dart';
 
 import 'package:flutter_app/struct/Product.dart';
-
+/// 底部导航栏
+///
+/// iOS中的tabbar
 class TabbarController extends StatefulWidget {
 
   @override
@@ -83,6 +85,7 @@ class _TabbarControllerState extends State<TabbarController> {
         onTap: (int index) {
           ///这里根据点击的index来显示，非index的page均隐藏
           if(_indexNum != index){
+            /// 修改状态
             setState(() {
               _indexNum = index;
             });
