@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // 需要在pubspec.yaml增加该模块
+import 'package:english_words/english_words.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -55,7 +56,7 @@ class HomePageState extends State<HomePage> {
   /// 有状态类返回组件信息
   @override
   Widget build(BuildContext context) {
-
+    final wordPair = new WordPair.random();
     return new Scaffold(
       appBar: new AppBar(
         leading: new IconButton(
@@ -63,7 +64,7 @@ class HomePageState extends State<HomePage> {
           tooltip: 'Navigation menu',
           onPressed: null,
         ),
-        title: new Text('Example title'),
+        title: new Text('Swift'),
         // bottom: TabBar(
         //   controller: _controller,
         //   tabs: [
@@ -94,7 +95,8 @@ class HomePageState extends State<HomePage> {
         child: new Column(
           children: <Widget>[
             Text(widget.prefix),
-            Text(this.currentTimeStr)
+            Text(this.currentTimeStr),
+            Text(wordPair.asPascalCase)
           ],
         )
       ),

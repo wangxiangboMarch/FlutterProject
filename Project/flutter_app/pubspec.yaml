@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl:  # 代表任意版本 推荐设置版本范围
   provider:
+  english_words: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

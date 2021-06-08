@@ -20,7 +20,7 @@ class ShoppingListItem extends StatelessWidget {
 
     return inCart ? Colors.black54 : Theme.of(context).primaryColor;
   }
-
+  flutter doctor
   TextStyle _getTextStyle(BuildContext context) {
     if (!inCart) return null;
 
